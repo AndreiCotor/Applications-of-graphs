@@ -1,0 +1,53 @@
+<html>
+    <head>
+		<link rel="stylesheet" href="Styles/main.css">
+		<link rel="stylesheet" href="Styles/navbar.css">
+        <title>Max-Flow</title>
+    </head>
+
+    <body>
+        <div class="navbar">
+			<a class="title" href="index.html">Applications of graphs</a>
+			<a href="index.html">Home</a>
+			<a href="mindist.html">Shortest path</a>
+			<a href="minmax.html">Artificial Intelligence</a>
+			<a href="tsp.html">TSP</a>
+			<a class="active" href="flow.html">Max-Flow</a>
+			<a href="dsu.html">DSU</a>
+			<a href="aint.html">Segment Trees</a>
+			<a href="trie.html">Trie</a>
+			<a href="about.html">About</a>
+		</div>
+		<div class="content">
+            <h1>Maximum flow problem</h1>
+            <p>In optimization theory, maximum flow problems involve finding a feasible flow through a flow network that obtains the maximum possible flow rate.</p>
+            <p>The maximum flow problem can be seen as a special case of more complex network flow problems, such as the circulation problem. The maximum value of an s-t flow (i.e., flow from source s to sink t) is equal to the minimum capacity of an s-t cut (i.e., cut severing s from t) in the network, as stated in the max-flow min-cut theorem.</p>
+            <img src="Images/flow.png" width="512" height="384"></img>
+            <h2>Edmonds–Karp algorithm</h2>
+            <p>In computer science, the Edmonds–Karp algorithm is an implementation of the Ford–Fulkerson method for computing the maximum flow in a flow network in O(|V||E|<sup>2</sup>) time. The algorithm was first published by Yefim Dinitz (whose name is also transliterated "E. A. Dinic", notably as author of his early papers) in 1970 and independently published by Jack Edmonds and Richard Karp in 1972. Dinic's algorithm includes additional techniques that reduce the running time to O(|V|<sup>2</sup>|E|).</p>
+            <p>The algorithm is identical to the Ford–Fulkerson algorithm, except that the search order when finding the augmenting path is defined. The path found must be a shortest path that has available capacity. This can be found by a breadth-first search, where we apply a weight of 1 to each edge. The running time of O(|V||E|<sup>2</sup>) is found by showing that each augmenting path can be found in O(|E|) time, that every time at least one of the E edges becomes saturated (an edge which has the maximum possible flow), that the distance from the saturated edge to the source along the augmenting path must be longer than last time it was saturated, and that the length is at most |V|. Another property of this algorithm is that the length of the shortest augmenting path increases monotonically. There is an accessible proof in Introduction to Algorithms.</p>
+            <h3>Example</h3>
+            <img src="Images/flow1.png">
+            <img src="Images/flow2.png">
+            <img src="Images/flow3.png">
+            <img src="Images/flow4.png">
+            <img src="Images/flow5.png">
+            <h3>Code</h3>
+            <div class="code">
+              <div data-pym-src="https://www.jdoodle.com/embed/v0/3i8i"></div>
+              <script src="https://www.jdoodle.com/assets/jdoodle-pym.min.js" type="text/javascript"></script>
+            </div>
+
+            <h2>Applications</h2>
+            <ul>
+                <li>Baseball elimination</li>
+                <li>Airline scheduling</li>
+                <li>Circulation–demand problem</li>
+                <li>Image segmentation</li>
+            </ul>
+		</div>
+		<div class="footer">
+			<p>&copy; <script>var d=new Date();document.write(d.getFullYear())</script> Cotor Andrei</p>
+		</div>
+    </body>
+</html>

@@ -1,0 +1,7 @@
+.content canvas
+{
+    margin-left: 20px;
+    margin-right: 20px;
+    height: 100px;
+    width: 100%;
+}

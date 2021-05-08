@@ -1,0 +1,46 @@
+<html>
+    <head>
+		<link rel="stylesheet" href="Styles/main.css">
+		<link rel="stylesheet" href="Styles/navbar.css">
+        <title>DSU</title>
+    </head>
+
+    <body>
+        <div class="navbar">
+			<a class="title" href="index.html">Applications of graphs</a>
+			<a href="index.html">Home</a>
+			<a href="mindist.html">Shortest path</a>
+			<a href="minmax.html">Artificial Intelligence</a>
+			<a href="tsp.html">TSP</a>
+			<a href="flow.html">Max-Flow</a>
+			<a class="active" href="dsu.html">DSU</a>
+			<a href="aint.html">Segment Trees</a>
+			<a href="trie.html">Trie</a>
+			<a href="about.html">About</a>
+		</div>
+		<div class="content">
+            <h1>Disjoint Set Union</h1>
+            <p>In computer science, a disjoint-set data structure, also called a union–find data structure or merge–find set, is a data structure that stores a collection of disjoint (non-overlapping) sets. Equivalently, it stores a partition of a set into disjoint subsets. It provides operations for adding new sets, merging sets (replacing them by their union), and finding a representative member of a set. The last operation allows to find out efficiently if any two elements are in the same or different sets.</p>
+            <h2>Finding set representatives</h2>
+                <p>The Find operation follows the chain of parent pointers from a specified query node x until it reaches a root element. This root element represents the set to which x belongs and may be x itself. Find returns the root element it reaches.</p>
+                <p>Performing a Find operation presents an important opportunity for improving the forest. The time in a Find operation is spent chasing parent pointers, so a flatter tree leads to faster Find operations. When a Find is executed, there is no faster way to reach the root than by following each parent pointer in succession. However, the parent pointers visited during this search can be updated to point closer to the root. Because every element visited on the way to a root is part of the same set, this does not change the sets stored in the forest. But it makes future Find operations faster, not only for the nodes between the query node and the root, but also for their descendants. This updating is an important part of the disjoint-set forest's amortized performance guarantee.</p>
+                <p>There are several algorithms for Find that achieve the asymptotically optimal time complexity. One family of algorithms, known as path compression, makes every node between the query node and the root point to the root.</p>
+            <h2>Merging two sets</h2>
+                <p>The operation Union(x, y) replaces the set containing x and the set containing y with their union. Union first uses Find to determine the roots of the trees containing x and y. If the roots are the same, there is nothing more to do. Otherwise, the two trees must be merged. This is done by either setting the parent pointer of x to y, or setting the parent pointer of y to x.</p>
+                <p>The choice of which node becomes the parent has consequences for the complexity of future operations on the tree. If it is done carelessly, trees can become excessively tall. For example, suppose that Union always made the tree containing x a subtree of the tree containing y. Begin with a forest that has just been initialized with elements 1, 2, 3, ..., n, and execute Union(1, 2), Union(2, 3), ..., Union(n − 1, n). The resulting forest contains a single tree whose root is n, and the path from 1 to n passes through every node in the tree. For this forest, the time to run Find(1) is O(n).</p>
+                <p>In an efficient implementation, tree height is controlled using union by size or union by rank. Both of these require that a node store information besides just its parent pointer. This information is used to decide which root becomes the new parent. Both strategies ensure that trees do not become too deep.</p>
+                <p>In the case of union by size, a node stores its size, which is simply its number of descendants (including the node itself). When the trees with roots x and y are merged, the node with more descendants becomes the parent. If the two nodes have the same number of descendants, then either one can become the parent. In both cases, the size of the new parent node is set to its new total number of descendants.</p>
+                <p>The time complexity is O(log*(n))</p>
+                <h3>Code</h3>
+                <div class="code">
+                    <div data-pym-src="https://www.jdoodle.com/embed/v0/3ijd"></div>
+                    <script src="https://www.jdoodle.com/assets/jdoodle-pym.min.js" type="text/javascript"></script>
+                </div>
+            <h2>Applications</h2>
+            <p>Disjoint-set data structures play a key role in Kruskal's algorithm for finding the minimum spanning tree of a graph. The importance of minimum spanning trees means that disjoint-set data structures underlie a wide variety of algorithms. In addition, disjoint-set data structures also have applications to symbolic computation, as well in compilers, especially for register allocation problems.</p>
+		</div>
+		<div class="footer">
+			<p>&copy; <script>var d=new Date();document.write(d.getFullYear())</script> Cotor Andrei</p>
+		</div>
+    </body>
+</html>
